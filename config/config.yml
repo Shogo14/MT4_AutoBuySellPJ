@@ -9,8 +9,8 @@ init_param:
 
 high_low_aus:
     #Higl_LowオーストラリアにログインするIDとパスワード
-    user_id: "shogo14kinjo@gmail.com"
-    password: "Fallout14"
+    user_id: ""
+    password: ""
     #シグナルがなく取引がないときに画面を操作だけしてアクティブな状態を保つ間隔（分）
     re_init_min_time: "10"
     #購入失敗時、再購入をする時間

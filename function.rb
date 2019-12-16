@@ -42,7 +42,6 @@ def main
 	end
 
 	signal_file_backup(signal_folder_path)
-	
 	$driver = Selenium::WebDriver.for :chrome # ブラウザ起動
 	$wait = Selenium::WebDriver::Wait.new(timeout: 200)
 	
@@ -98,7 +97,7 @@ def main
 		end
 
 		if re_init_flg && last_init_time + (60 * re_init_time.to_i) < Time.now
-			tarbo_usdjpy_init
+			high_low_aus_init(currency_pare)
 			last_init_time = Time.now
 		end
 	end
@@ -106,8 +105,12 @@ def main
 
 	sleep(10)
 	$driver.quit
+
+rescue => e
+	error_message = e.message
+	$logger.error(error_message)
 rescue SystemExit
-	$logger.info("System Exit...")
+	$logger.info("終了します。")
 
 end
 
@@ -166,6 +169,9 @@ end
 def high_low_aus_init(currency_pare)
 	puts "HighLowオーストラリアの購入前準備開始"
 	$logger.info("HighLowオーストラリアの購入前準備開始")
+
+	$logger.info("画面最上部へスクロールする")
+	$driver.execute_script('window.scroll(0,0);')
 	
 	$logger.info("Tarboを選択")
 	sleep(1)
