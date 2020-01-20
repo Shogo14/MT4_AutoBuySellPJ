@@ -48,8 +48,11 @@ def signal_read(signal_folder_path,pre_update_time,today)
             
             begin
                 retries ||= 0
+                $logger.info("retry count #{retries.to_s}")
                 f = File.open(signal_file,'r') 
             rescue
+                sleep(1)
+                $logger.info("resucue retry count #{retries.to_s}")
                 retry if (retries += 1) < 10
             end
             

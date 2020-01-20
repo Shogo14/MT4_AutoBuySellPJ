@@ -22,7 +22,7 @@ signal:
 
 auto_trading_time: 
     #自動売買を始める時間と終わる時間
-    start_time: "07:00"
+    start_time: "08:00"
     end_time: "02:00"
 
 gmail_init:
